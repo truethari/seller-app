@@ -1,10 +1,11 @@
+import AllItems from "./components/allItems";
+
 import "./App.css";
-import NavBarC from "./components/navBar";
 
 function App() {
   return (
     <div className="App">
-      <NavBarC />
+      <p>Hello</p>
     </div>
   );
 }
