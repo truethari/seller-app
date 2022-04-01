@@ -12,21 +12,24 @@ class AllItems extends Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Item Code</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th></th>
-              <th></th>
+              <th width="3%">#</th>
+              <th width="5%">ID</th>
+              <th width="7%">Item Code</th>
+              <th width="30%">Name</th>
+              <th width="10%">Price</th>
+              <th width="15%">Description</th>
+              <th width="20%"></th>
             </tr>
           </thead>
           <tbody>
-            {this.state.items.map((e) => (
+            {this.state.items.map((e, index) => (
               <tr key={e.id}>
+                <td>{index + 1}</td>
                 <td>{e.id}</td>
                 <td>{e.itemCode}</td>
                 <td>{e.brandName + " - " + e.productName}</td>
-                <td></td>
+                <td>{e.price}</td>
+                <td>{e.description}</td>
                 <td>
                   <Button
                     style={{ marginLeft: 5, marginRight: 5 }}
