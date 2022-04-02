@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getAllItems } from "../services/fakeItems";
 import Notification from "./common/notification";
 import AllItemsTableBody from "./tables/allItemsTable";
-import { capitalizeFirstLetter } from "./utils/strings";
+import ItemDescriptionTable from "./tables/itemDescription";
 
 class AllItems extends Component {
   state = {
@@ -29,7 +29,7 @@ class AllItems extends Component {
     this.setState({
       sellNotificationOpen: true,
       selectedItemObject: object,
-      action: "sell",
+      action: "Sell",
     });
   };
 
@@ -37,7 +37,7 @@ class AllItems extends Component {
     this.setState({
       sellNotificationOpen: true,
       selectedItemObject: object,
-      action: "info",
+      action: "Info",
     });
   };
 
@@ -45,25 +45,25 @@ class AllItems extends Component {
     this.setState({
       sellNotificationOpen: true,
       selectedItemObject: object,
-      action: "remove",
+      action: "Remove",
     });
   };
 
   generateDescription(object) {
-    var itemInfo = Object.keys(object).map(function (key) {
-      return (
-        <option value={key}>
-          {capitalizeFirstLetter(key) +
-            " : " +
-            capitalizeFirstLetter(object[key])}
-        </option>
-      );
-    });
-    return itemInfo;
+    return (
+      <ItemDescriptionTable
+        columns={{
+          _a: "20%",
+          _b: "80%",
+        }}
+        items={object}
+      />
+    );
   }
 
   render() {
-    const { columns, items, action, selectedItemObject } = this.state;
+    const { columns, items, action, selectedItemObject, sellNotificationOpen } =
+      this.state;
     return (
       <React.Fragment>
         <AllItemsTableBody
@@ -74,11 +74,9 @@ class AllItems extends Component {
           onRemoveClick={this.handleRemoveButton}
         />
         <Notification
-          show={this.state.sellNotificationOpen}
+          show={sellNotificationOpen}
           onHide={this.setModalShow}
-          heading={
-            capitalizeFirstLetter(action) + " " + selectedItemObject.name
-          }
+          heading={action + " " + selectedItemObject.name}
           description={this.generateDescription(selectedItemObject)}
         />
       </React.Fragment>
