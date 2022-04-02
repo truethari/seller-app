@@ -90,3 +90,18 @@ export function getAllItems() {
   }
   return allItems;
 }
+
+export function getItem(id) {
+  let allItemsInInventory = [...mobilePhones, ...laptops];
+
+  for (var item in allItemsInInventory) {
+    if (allItemsInInventory[item].id === id) {
+      allItemsInInventory[item]["name"] = getName(allItemsInInventory[item]);
+      allItemsInInventory[item]["price"] =
+        priceList[allItemsInInventory[item]["itemCode"]];
+
+      return allItemsInInventory[item];
+    }
+  }
+  return;
+}

@@ -1,10 +1,8 @@
-import AllItems from "./components/allItems";
-
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="content">
       <p>Hello</p>
     </div>
   );

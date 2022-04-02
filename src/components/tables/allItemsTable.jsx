@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import TableHead from "../common/tableHead";
 
 const AllItemsTableBody = (props) => {
-  const { columns, items, onInfoClick, onSellClick, onRemoveClick } = props;
+  const { columns, items, onSellClick, onRemoveClick } = props;
   return (
     <div className="table-container">
       <Table striped bordered hover>
@@ -26,14 +27,15 @@ const AllItemsTableBody = (props) => {
                 >
                   Sell
                 </Button>
-                <Button
-                  style={{ marginLeft: 0, marginRight: 5 }}
-                  variant="primary"
-                  size="sm"
-                  onClick={() => onInfoClick(item)}
-                >
-                  Info
-                </Button>
+                <Link to={"/allItems/" + item.id}>
+                  <Button
+                    style={{ marginLeft: 0, marginRight: 5 }}
+                    variant="primary"
+                    size="sm"
+                  >
+                    Info
+                  </Button>
+                </Link>
                 <Button
                   style={{ marginLeft: 0, marginRight: 5 }}
                   variant="danger"

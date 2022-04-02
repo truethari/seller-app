@@ -33,14 +33,6 @@ class AllItems extends Component {
     });
   };
 
-  handleInfoButton = (object) => {
-    this.setState({
-      sellNotificationOpen: true,
-      selectedItemObject: object,
-      action: "Info",
-    });
-  };
-
   handleRemoveButton = (object) => {
     this.setState({
       sellNotificationOpen: true,
@@ -70,7 +62,6 @@ class AllItems extends Component {
           columns={columns}
           items={items}
           onSellClick={this.handleSellButton}
-          onInfoClick={this.handleInfoButton}
           onRemoveClick={this.handleRemoveButton}
         />
         <Notification

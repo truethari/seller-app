@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+
 import TableHead from "../common/tableHead";
 import { capitalizeFirstLetter } from "./../utils/strings";
 
@@ -12,7 +13,7 @@ const ItemDescriptionTable = (props) => {
         <tbody>
           {Object.keys(items).map(function (key) {
             return (
-              <tr>
+              <tr key={key}>
                 <td>{capitalizeFirstLetter(key)}</td>
                 <td>{capitalizeFirstLetter(items[key])}</td>
               </tr>
