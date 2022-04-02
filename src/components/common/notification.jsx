@@ -2,10 +2,11 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
 const Notification = (props) => {
+  const { show, onHide, actionInfo } = props;
   return (
     <Modal
-      show={props.show}
-      onHide={props.onHide}
+      show={show}
+      onHide={onHide}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -25,7 +26,7 @@ const Notification = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary">Yes</Button>
-        <Button variant="danger" onClick={props.onHide}>
+        <Button variant="danger" onClick={onHide}>
           No
         </Button>
       </Modal.Footer>

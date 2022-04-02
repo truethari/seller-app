@@ -21,29 +21,31 @@ class AllItems extends Component {
   };
 
   setModalShow = () => {
-    const sellNotificationOpen = false;
-    this.setState({ sellNotificationOpen });
+    this.setState({ sellNotificationOpen: false });
   };
 
   handleSellButton = (object) => {
-    const sellNotificationOpen = true;
-    const selectedItemObject = object;
-    const action = "sell";
-    this.setState({ sellNotificationOpen, selectedItemObject, action });
+    this.setState({
+      sellNotificationOpen: true,
+      selectedItemObject: object,
+      action: "sell",
+    });
   };
 
   handleInfoButton = (object) => {
-    const sellNotificationOpen = true;
-    const selectedItemObject = object;
-    const action = "info";
-    this.setState({ sellNotificationOpen, selectedItemObject, action });
+    this.setState({
+      sellNotificationOpen: true,
+      selectedItemObject: object,
+      action: "info",
+    });
   };
 
   handleRemoveButton = (object) => {
-    const sellNotificationOpen = true;
-    const selectedItemObject = object;
-    const action = "delete";
-    this.setState({ sellNotificationOpen, selectedItemObject, action });
+    this.setState({
+      sellNotificationOpen: true,
+      selectedItemObject: object,
+      action: "delete",
+    });
   };
 
   render() {
