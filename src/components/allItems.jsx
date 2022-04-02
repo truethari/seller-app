@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getAllItems } from "../services/fakeItems";
 import Notification from "./common/notification";
 import AllItemsTableBody from "./tables/allItemsTable";
+import { capitalizeFirstLetter } from "./utils/strings";
 
 class AllItems extends Component {
   state = {
@@ -44,12 +45,25 @@ class AllItems extends Component {
     this.setState({
       sellNotificationOpen: true,
       selectedItemObject: object,
-      action: "delete",
+      action: "remove",
     });
   };
 
+  generateDescription(object) {
+    var itemInfo = Object.keys(object).map(function (key) {
+      return (
+        <option value={key}>
+          {capitalizeFirstLetter(key) +
+            " : " +
+            capitalizeFirstLetter(object[key])}
+        </option>
+      );
+    });
+    return itemInfo;
+  }
+
   render() {
-    const { columns, items, action } = this.state;
+    const { columns, items, action, selectedItemObject } = this.state;
     return (
       <React.Fragment>
         <AllItemsTableBody
@@ -62,7 +76,10 @@ class AllItems extends Component {
         <Notification
           show={this.state.sellNotificationOpen}
           onHide={this.setModalShow}
-          actionInfo={action}
+          heading={
+            capitalizeFirstLetter(action) + " " + selectedItemObject.name
+          }
+          description={this.generateDescription(selectedItemObject)}
         />
       </React.Fragment>
     );

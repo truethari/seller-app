@@ -14,7 +14,7 @@ const AllItemsTableBody = (props) => {
               <td>{index + 1}</td>
               <td>{item.id}</td>
               <td>{item.itemCode}</td>
-              <td>{item.brandName + " - " + item.productName}</td>
+              <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.description}</td>
               <td>

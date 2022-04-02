@@ -2,6 +2,7 @@ const mobilePhones = [
   {
     id: 1,
     itemCode: "PH01",
+    category: "phone",
     productName: "iPhone X",
     brandName: "Apple",
     storage: "128GB",
@@ -12,6 +13,7 @@ const mobilePhones = [
   {
     id: 2,
     itemCode: "PH02",
+    category: "phone",
     productName: "iPhone 8",
     brandName: "Apple",
     storage: "64GB",
@@ -25,6 +27,7 @@ const laptops = [
   {
     id: 5,
     itemCode: "LP01",
+    category: "laptop",
     productName: "VivoBook 17",
     brandName: "Asus",
     processor: "AMD Ryzen 3700U",
@@ -38,6 +41,7 @@ const laptops = [
   {
     id: 6,
     itemCode: "LP02",
+    category: "laptop",
     productName: "VivoBook 18",
     brandName: "Asus",
     processor: "AMD Ryzen 3700U",
@@ -52,6 +56,25 @@ const laptops = [
 
 const priceList = { PH01: "$999", PH02: "$500", LP01: "$2000", LP02: "$2500" };
 
+function getName(obj) {
+  let name = "";
+  if (obj.category === "phone") {
+    name = obj.brandName + " " + obj.productName + " " + obj.storage;
+  } else if (obj.category === "laptop") {
+    name =
+      obj.brandName +
+      " " +
+      obj.productName +
+      " " +
+      obj.processor +
+      " " +
+      obj.ram;
+  } else {
+    name = obj.brandName + " " + obj.productName;
+  }
+  return name;
+}
+
 export function getAllItems() {
   const allItemsInInventory = [...mobilePhones, ...laptops];
   let allItems = [];
@@ -59,6 +82,7 @@ export function getAllItems() {
   var round = 0;
   for (var item in allItemsInInventory) {
     var obj = allItemsInInventory[item];
+    obj["name"] = getName(obj);
     obj["price"] = priceList[obj["itemCode"]];
 
     allItems[round] = obj;
