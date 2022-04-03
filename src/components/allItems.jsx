@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+
 import { getAllItems } from "../services/fakeItems";
+import AddItem from "./addItem";
 import Notification from "./common/notification";
 import AllItemsTableBody from "./tables/allItemsTable";
 import ItemDescriptionTable from "./tables/itemDescription";
@@ -19,26 +22,12 @@ class AllItems extends Component {
     sellNotificationOpen: false,
     selectedItemObject: {},
     action: "",
+    notificationHeading: "",
+    notificationDescription: "",
   };
 
   setModalShow = () => {
     this.setState({ sellNotificationOpen: false });
-  };
-
-  handleSellButton = (object) => {
-    this.setState({
-      sellNotificationOpen: true,
-      selectedItemObject: object,
-      action: "Sell",
-    });
-  };
-
-  handleRemoveButton = (object) => {
-    this.setState({
-      sellNotificationOpen: true,
-      selectedItemObject: object,
-      action: "Remove",
-    });
   };
 
   generateDescription(object) {
@@ -53,11 +42,69 @@ class AllItems extends Component {
     );
   }
 
+  handleSellButton = (object) => {
+    const notificationHeading =
+      this.state.action + " " + this.state.selectedItemObject.name;
+    const notificationDescription = this.generateDescription(
+      this.state.selectedItemObject
+    );
+    this.setState({
+      sellNotificationOpen: true,
+      selectedItemObject: object,
+      action: "Sell",
+      notificationHeading,
+      notificationDescription,
+    });
+  };
+
+  handleRemoveButton = (object) => {
+    const notificationHeading =
+      this.state.action + " " + this.state.selectedItemObject.name;
+    const notificationDescription = this.generateDescription(
+      this.state.selectedItemObject
+    );
+    this.setState({
+      sellNotificationOpen: true,
+      selectedItemObject: object,
+      action: "Remove",
+      notificationHeading,
+      notificationDescription,
+    });
+  };
+
+  handleAddItemButton = () => {
+    const notificationHeading = "Add an item";
+    const notificationDescription = <AddItem />;
+    this.setState({
+      sellNotificationOpen: true,
+      notificationHeading,
+      notificationDescription,
+    });
+  };
+
   render() {
-    const { columns, items, action, selectedItemObject, sellNotificationOpen } =
-      this.state;
+    const {
+      columns,
+      items,
+      sellNotificationOpen,
+      notificationHeading,
+      notificationDescription,
+    } = this.state;
     return (
-      <React.Fragment>
+      <div>
+        <Button
+          style={{
+            marginLeft: 5,
+            marginRight: 5,
+            marginTop: "10px",
+            marginBottom: "10px",
+          }}
+          variant="primary"
+          size="sm"
+          onClick={this.handleAddItemButton}
+        >
+          Add Item
+        </Button>
         <AllItemsTableBody
           columns={columns}
           items={items}
@@ -67,10 +114,10 @@ class AllItems extends Component {
         <Notification
           show={sellNotificationOpen}
           onHide={this.setModalShow}
-          heading={action + " " + selectedItemObject.name}
-          description={this.generateDescription(selectedItemObject)}
+          heading={notificationHeading}
+          description={notificationDescription}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

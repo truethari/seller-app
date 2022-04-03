@@ -60,7 +60,7 @@ const laptops = [
     description: "",
   },
   {
-    id: 6,
+    id: 60,
     itemCode: "LP02",
     category: "laptop",
     productName: "VivoBook 18",
@@ -128,7 +128,7 @@ function getItem(id) {
 }
 
 function getCategories() {
-  return ["Phones", "Laptops"];
+  return ["Select..", "Phones", "Laptops"];
 }
 
 function getKeys(category) {
