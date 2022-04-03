@@ -1,4 +1,25 @@
-const mobilePhones = [
+const commonKeys = [
+  "id",
+  "itemCode",
+  "category",
+  "productName",
+  "brandName",
+  "addedDate",
+  "description",
+];
+
+const phoneKeys = [...commonKeys, "storage", "imei"];
+
+const laptopKeys = [
+  ...commonKeys,
+  "processor",
+  "ram",
+  "storage",
+  "gpu",
+  "serialNumber",
+];
+
+const phones = [
   {
     id: 1,
     itemCode: "PH01",
@@ -75,8 +96,8 @@ function getName(obj) {
   return name;
 }
 
-export function getAllItems() {
-  const allItemsInInventory = [...mobilePhones, ...laptops];
+function getAllItems() {
+  const allItemsInInventory = [...phones, ...laptops];
   let allItems = [];
 
   var round = 0;
@@ -91,8 +112,8 @@ export function getAllItems() {
   return allItems;
 }
 
-export function getItem(id) {
-  let allItemsInInventory = [...mobilePhones, ...laptops];
+function getItem(id) {
+  let allItemsInInventory = [...phones, ...laptops];
 
   for (var item in allItemsInInventory) {
     if (allItemsInInventory[item].id === id) {
@@ -105,3 +126,19 @@ export function getItem(id) {
   }
   return;
 }
+
+function getCategories() {
+  return ["Phones", "Laptops"];
+}
+
+function getKeys(category) {
+  const except = ["id", "category", "addedDate"];
+  let selectedArray = [];
+
+  if (category === "Phones") selectedArray = phoneKeys;
+  else if (category === "Laptops") selectedArray = laptopKeys;
+
+  return selectedArray.filter((element) => !except.includes(element));
+}
+
+export { getAllItems, getItem, getCategories, getKeys };
