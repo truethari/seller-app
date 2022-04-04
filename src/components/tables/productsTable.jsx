@@ -14,7 +14,7 @@ const ProductsTableBody = (props) => {
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>{item.id}</td>
-              <td>{item.itemCode}</td>
+              <td>{item.productCode}</td>
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.description}</td>

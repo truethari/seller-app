@@ -10,7 +10,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import NavBarC from "./components/navBar";
 import Products from "./components/products";
 import ProductDetails from "./components/productDetails";
-import Footer from "./components/footer";
 
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
@@ -23,7 +22,6 @@ root.render(
       <Route path="/products" element={<Products />} />
       <Route path="/" element={<App />} />
     </Routes>
-    <Footer />
   </BrowserRouter>
 );
 
