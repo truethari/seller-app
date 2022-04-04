@@ -1,6 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { getProduct } from "../services/fakeProducts";
 import ProductDescriptionTable from "./tables/productDescription";
@@ -13,6 +15,13 @@ const ProductDetails = () => {
 
   return (
     <div className="content">
+      <Link to="/products">
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          size="lg"
+          style={{ marginBottom: "10px" }}
+        />
+      </Link>
       <h3>Product Details - {item.name}</h3>
       <br />
       <ProductDescriptionTable
