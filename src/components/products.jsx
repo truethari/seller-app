@@ -21,7 +21,6 @@ class Products extends Component {
     },
     sellNotificationOpen: false,
     selectedProductObject: {},
-    action: "",
     notificationHeading: "",
     notificationDescription: "",
   };
@@ -43,30 +42,22 @@ class Products extends Component {
   }
 
   handleSellButton = (object) => {
-    const notificationHeading =
-      this.state.action + " " + this.state.selectedProductObject.name;
-    const notificationDescription = this.generateDescription(
-      this.state.selectedProductObject
-    );
+    const notificationHeading = "Sell " + object.name;
+    const notificationDescription = this.generateDescription(object);
     this.setState({
       sellNotificationOpen: true,
       selectedProductObject: object,
-      action: "Sell",
       notificationHeading,
       notificationDescription,
     });
   };
 
   handleRemoveButton = (object) => {
-    const notificationHeading =
-      this.state.action + " " + this.state.selectedProductObject.name;
-    const notificationDescription = this.generateDescription(
-      this.state.selectedProductObject
-    );
+    const notificationHeading = this.state.action + "Remove " + object.name;
+    const notificationDescription = this.generateDescription(object);
     this.setState({
       sellNotificationOpen: true,
       selectedProductObject: object,
-      action: "Remove",
       notificationHeading,
       notificationDescription,
     });
