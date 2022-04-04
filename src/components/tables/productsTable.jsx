@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import TableHead from "../common/tableHead";
 
-const AllItemsTableBody = (props) => {
+const ProductsTableBody = (props) => {
   const { columns, items, onSellClick, onRemoveClick } = props;
   return (
     <div className="table-container">
@@ -28,7 +28,7 @@ const AllItemsTableBody = (props) => {
                   >
                     Sell
                   </Button>
-                  <Link to={"/allItems/" + item.id}>
+                  <Link to={"/products/" + item.id}>
                     <Button
                       style={{ marginLeft: 0, marginRight: 5 }}
                       variant="primary"
@@ -55,4 +55,4 @@ const AllItemsTableBody = (props) => {
   );
 };
 
-export default AllItemsTableBody;
+export default ProductsTableBody;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 
-import { getCategories, getKeys } from "../services/fakeItems";
+import { getCategories, getKeys } from "../services/fakeProducts";
 import { capitalizeFirstLetter } from "./utils/strings";
 
-class AddItem extends Component {
+class AddProduct extends Component {
   state = {
     selectedCategory: "Select..",
     dataObject: {},
@@ -70,4 +70,4 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem;
+export default AddProduct;

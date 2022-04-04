@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 import TableHead from "../common/tableHead";
 import { capitalizeFirstLetter } from "./../utils/strings";
 
-const ItemDescriptionTable = (props) => {
+const ProductDescriptionTable = (props) => {
   const { columns, items } = props;
   return (
     <div className="table-container">
@@ -25,4 +25,4 @@ const ItemDescriptionTable = (props) => {
   );
 };
 
-export default ItemDescriptionTable;
+export default ProductDescriptionTable;

@@ -1,6 +1,6 @@
 const commonKeys = [
   "id",
-  "itemCode",
+  "productCode",
   "category",
   "productName",
   "brandName",
@@ -22,7 +22,7 @@ const laptopKeys = [
 const phones = [
   {
     id: 1,
-    itemCode: "PH01",
+    productCode: "PH01",
     category: "phone",
     productName: "iPhone X",
     brandName: "Apple",
@@ -33,7 +33,7 @@ const phones = [
   },
   {
     id: 2,
-    itemCode: "PH02",
+    productCode: "PH02",
     category: "phone",
     productName: "iPhone 8",
     brandName: "Apple",
@@ -47,7 +47,7 @@ const phones = [
 const laptops = [
   {
     id: 5,
-    itemCode: "LP01",
+    productCode: "LP01",
     category: "laptop",
     productName: "VivoBook 17",
     brandName: "Asus",
@@ -61,7 +61,7 @@ const laptops = [
   },
   {
     id: 60,
-    itemCode: "LP02",
+    productCode: "LP02",
     category: "laptop",
     productName: "VivoBook 18",
     brandName: "Asus",
@@ -96,32 +96,32 @@ function getName(obj) {
   return name;
 }
 
-function getAllItems() {
-  const allItemsInInventory = [...phones, ...laptops];
-  let allItems = [];
+function getAllProducts() {
+  const ProductsInInventory = [...phones, ...laptops];
+  let allProducts = [];
 
   var round = 0;
-  for (var item in allItemsInInventory) {
-    var obj = allItemsInInventory[item];
+  for (var item in ProductsInInventory) {
+    var obj = ProductsInInventory[item];
     obj["name"] = getName(obj);
-    obj["price"] = priceList[obj["itemCode"]];
+    obj["price"] = priceList[obj["productCode"]];
 
-    allItems[round] = obj;
+    allProducts[round] = obj;
     round += 1;
   }
-  return allItems;
+  return allProducts;
 }
 
-function getItem(id) {
-  let allItemsInInventory = [...phones, ...laptops];
+function getProduct(id) {
+  let ProductsInInventory = [...phones, ...laptops];
 
-  for (var item in allItemsInInventory) {
-    if (allItemsInInventory[item].id === id) {
-      allItemsInInventory[item]["name"] = getName(allItemsInInventory[item]);
-      allItemsInInventory[item]["price"] =
-        priceList[allItemsInInventory[item]["itemCode"]];
+  for (var item in ProductsInInventory) {
+    if (ProductsInInventory[item].id === id) {
+      ProductsInInventory[item]["name"] = getName(ProductsInInventory[item]);
+      ProductsInInventory[item]["price"] =
+        priceList[ProductsInInventory[item]["productCode"]];
 
-      return allItemsInInventory[item];
+      return ProductsInInventory[item];
     }
   }
   return;
@@ -141,4 +141,4 @@ function getKeys(category) {
   return selectedArray.filter((element) => !except.includes(element));
 }
 
-export { getAllItems, getItem, getCategories, getKeys };
+export { getAllProducts, getProduct, getCategories, getKeys };

@@ -8,8 +8,8 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 import NavBarC from "./components/navBar";
-import AllItems from "./components/allItems";
-import ItemDetails from "./components/itemDetails";
+import Products from "./components/products";
+import ProductDetails from "./components/productDetails";
 import Footer from "./components/footer";
 
 const container = document.getElementById("root");
@@ -19,8 +19,8 @@ root.render(
   <BrowserRouter>
     <NavBarC />
     <Routes>
-      <Route path="/allitems/:id" element={<ItemDetails />} />
-      <Route path="/allitems" element={<AllItems />} />
+      <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/products" element={<Products />} />
       <Route path="/" element={<App />} />
     </Routes>
     <Footer />

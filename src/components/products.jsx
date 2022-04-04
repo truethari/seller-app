@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 
-import { getAllItems } from "../services/fakeItems";
-import AddItem from "./addItem";
+import { getAllProducts } from "../services/fakeProducts";
+import AddProduct from "./addProduct";
 import Notification from "./common/notification";
-import AllItemsTableBody from "./tables/allItemsTable";
-import ItemDescriptionTable from "./tables/itemDescription";
+import ProductDescriptionTable from "./tables/productDescription";
+import ProductsTableBody from "./tables/productsTable";
 
-class AllItems extends Component {
+class Products extends Component {
   state = {
-    items: getAllItems(),
+    items: getAllProducts(),
     columns: {
       "#": "3%",
       ID: "5%",
-      "Item Code": "7%",
+      "Product Code": "7%",
       Name: "30%",
       Price: "10%",
       Description: "15%",
       _buttons: "20%",
     },
     sellNotificationOpen: false,
-    selectedItemObject: {},
+    selectedProductObject: {},
     action: "",
     notificationHeading: "",
     notificationDescription: "",
@@ -32,7 +32,7 @@ class AllItems extends Component {
 
   generateDescription(object) {
     return (
-      <ItemDescriptionTable
+      <ProductDescriptionTable
         columns={{
           _a: "20%",
           _b: "80%",
@@ -44,13 +44,13 @@ class AllItems extends Component {
 
   handleSellButton = (object) => {
     const notificationHeading =
-      this.state.action + " " + this.state.selectedItemObject.name;
+      this.state.action + " " + this.state.selectedProductObject.name;
     const notificationDescription = this.generateDescription(
-      this.state.selectedItemObject
+      this.state.selectedProductObject
     );
     this.setState({
       sellNotificationOpen: true,
-      selectedItemObject: object,
+      selectedProductObject: object,
       action: "Sell",
       notificationHeading,
       notificationDescription,
@@ -59,13 +59,13 @@ class AllItems extends Component {
 
   handleRemoveButton = (object) => {
     const notificationHeading =
-      this.state.action + " " + this.state.selectedItemObject.name;
+      this.state.action + " " + this.state.selectedProductObject.name;
     const notificationDescription = this.generateDescription(
-      this.state.selectedItemObject
+      this.state.selectedProductObject
     );
     this.setState({
       sellNotificationOpen: true,
-      selectedItemObject: object,
+      selectedProductObject: object,
       action: "Remove",
       notificationHeading,
       notificationDescription,
@@ -73,8 +73,8 @@ class AllItems extends Component {
   };
 
   handleAddItemButton = () => {
-    const notificationHeading = "Add an item";
-    const notificationDescription = <AddItem />;
+    const notificationHeading = "Add new product";
+    const notificationDescription = <AddProduct />;
     this.setState({
       sellNotificationOpen: true,
       notificationHeading,
@@ -103,9 +103,9 @@ class AllItems extends Component {
           size="sm"
           onClick={this.handleAddItemButton}
         >
-          Add Item
+          Add new product
         </Button>
-        <AllItemsTableBody
+        <ProductsTableBody
           columns={columns}
           items={items}
           onSellClick={this.handleSellButton}
@@ -122,4 +122,4 @@ class AllItems extends Component {
   }
 }
 
-export default AllItems;
+export default Products;

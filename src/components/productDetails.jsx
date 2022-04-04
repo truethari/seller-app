@@ -2,20 +2,20 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-import { getItem } from "../services/fakeItems";
-import ItemDescriptionTable from "./tables/itemDescription";
+import { getProduct } from "../services/fakeProducts";
+import ProductDescriptionTable from "./tables/productDescription";
 
 import "../App.css";
 
-const ItemDetails = () => {
+const ProductDetails = () => {
   const { id } = useParams();
-  const item = getItem(parseInt(id));
+  const item = getProduct(parseInt(id));
 
   return (
     <div className="content">
-      <h3>Item Details - {item.name}</h3>
+      <h3>Product Details - {item.name}</h3>
       <br />
-      <ItemDescriptionTable
+      <ProductDescriptionTable
         columns={{
           _a: "20%",
           _b: "80%",
@@ -50,4 +50,4 @@ const ItemDetails = () => {
   );
 };
 
-export default ItemDetails;
+export default ProductDetails;

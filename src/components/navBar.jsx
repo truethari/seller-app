@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 class NavBarC extends Component {
   render() {
@@ -13,16 +13,9 @@ class NavBarC extends Component {
               <Nav.Link>
                 <Link to="/">Home</Link>
               </Nav.Link>
-              <NavDropdown title="Items" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/allitems">All Items</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>Add Item</NavDropdown.Item>
-                <NavDropdown.Item>Sell Item</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>Remove Item</NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link>
+                <Link to="/products">Products</Link>
+              </Nav.Link>
               <Nav.Link>Customers</Nav.Link>
             </Nav>
           </Container>
