@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 
-import { getAllProducts } from "../services/fakeProducts";
+import { GetAllProducts } from "../services/fakeProducts";
 import AddProduct from "./addProduct";
 import Notification from "./common/notification";
 import ProductDescriptionTable from "./tables/productDescription";
@@ -9,7 +9,7 @@ import ProductsTableBody from "./tables/productsTable";
 
 class Products extends Component {
   state = {
-    items: getAllProducts(),
+    items: GetAllProducts(),
     columns: {
       "#": "3%",
       ID: "5%",

@@ -77,7 +77,7 @@ const laptops = [
 
 const priceList = { PH01: "$999", PH02: "$500", LP01: "$2000", LP02: "$2500" };
 
-function getName(obj) {
+function GetName(obj) {
   let name = "";
   if (obj.category === "phone") {
     name = obj.brandName + " " + obj.productName + " " + obj.storage;
@@ -96,14 +96,14 @@ function getName(obj) {
   return name;
 }
 
-function getAllProducts() {
+function GetAllProducts() {
   const ProductsInInventory = [...phones, ...laptops];
   let allProducts = [];
 
   var round = 0;
   for (var item in ProductsInInventory) {
     var obj = ProductsInInventory[item];
-    obj["name"] = getName(obj);
+    obj["name"] = GetName(obj);
     obj["price"] = priceList[obj["productCode"]];
 
     allProducts[round] = obj;
@@ -112,12 +112,12 @@ function getAllProducts() {
   return allProducts;
 }
 
-function getProduct(id) {
+function GetProduct(id) {
   let ProductsInInventory = [...phones, ...laptops];
 
   for (var item in ProductsInInventory) {
     if (ProductsInInventory[item].id === id) {
-      ProductsInInventory[item]["name"] = getName(ProductsInInventory[item]);
+      ProductsInInventory[item]["name"] = GetName(ProductsInInventory[item]);
       ProductsInInventory[item]["price"] =
         priceList[ProductsInInventory[item]["productCode"]];
 
@@ -127,11 +127,11 @@ function getProduct(id) {
   return;
 }
 
-function getCategories() {
+function GetCategories() {
   return ["Select..", "Phones", "Laptops"];
 }
 
-function getKeys(category) {
+function GetKeys(category) {
   const except = ["id", "category", "addedDate"];
   let selectedArray = [];
 
@@ -141,4 +141,4 @@ function getKeys(category) {
   return selectedArray.filter((element) => !except.includes(element));
 }
 
-export { getAllProducts, getProduct, getCategories, getKeys };
+export { GetAllProducts, GetProduct, GetCategories, GetKeys };

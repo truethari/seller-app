@@ -4,14 +4,14 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-import { getProduct } from "../services/fakeProducts";
+import { GetProduct } from "../services/fakeProducts";
 import ProductDescriptionTable from "./tables/productDescription";
 
 import "../App.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const item = getProduct(parseInt(id));
+  const item = GetProduct(parseInt(id));
 
   return (
     <div className="content">

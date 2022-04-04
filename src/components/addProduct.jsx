@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 
-import { getCategories, getKeys } from "../services/fakeProducts";
+import { GetCategories, GetKeys } from "../services/fakeProducts";
 import { capitalizeFirstLetter } from "./utils/strings";
 
 class AddProduct extends Component {
@@ -12,7 +12,7 @@ class AddProduct extends Component {
 
   onChangeCategory = (event) => {
     const selectedCategory = event.target.value;
-    const keys = getKeys(selectedCategory);
+    const keys = GetKeys(selectedCategory);
     let dataObject = {};
 
     for (var key in keys) {
@@ -41,7 +41,7 @@ class AddProduct extends Component {
             defaultValue={this.state.selectedCategory}
             onChange={this.onChangeCategory}
           >
-            {getCategories().map((category) => (
+            {GetCategories().map((category) => (
               <option key={category}>{category}</option>
             ))}
           </Form.Control>
@@ -51,7 +51,7 @@ class AddProduct extends Component {
           <p>Please select a category for add details</p>
         ) : (
           <React.Fragment>
-            {getKeys(this.state.selectedCategory).map((item) => (
+            {GetKeys(this.state.selectedCategory).map((item) => (
               <Form.Group key={item} as={Row} className="mb-3">
                 <Form.Label column>{capitalizeFirstLetter(item)}</Form.Label>
                 <Col sm={10}>
