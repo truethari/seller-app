@@ -77,6 +77,27 @@ const laptops = [
 
 const priceList = { PH01: "$999", PH02: "$500", LP01: "$2000", LP02: "$2500" };
 
+const soldItems = [
+  {
+    id: 2,
+    customerName: "Mike A. Knudson",
+    address: "1748 Alexander Drive",
+    phoneNo: "000-000-0000",
+    email: "example@email.com",
+    date: "04-04-2022",
+    note: "",
+  },
+  {
+    id: 60,
+    customerName: "Clifton C. Lafreniere",
+    address: "1149 McKinley Avenue",
+    phoneNo: "000-000-0000",
+    email: "example@email.com",
+    date: "04-04-2022",
+    note: "",
+  },
+];
+
 function GetName(obj) {
   let name = "";
   if (obj.category === "phone") {
@@ -141,4 +162,24 @@ function GetKeys(category) {
   return selectedArray.filter((element) => !except.includes(element));
 }
 
-export { GetAllProducts, GetProduct, GetCategories, GetKeys };
+function GetSoldItems() {
+  return soldItems;
+}
+
+function GetSoldStatus(_id) {
+  for (var item in soldItems) {
+    if (soldItems[item].id === _id) {
+      return true;
+    }
+  }
+  return false;
+}
+
+export {
+  GetAllProducts,
+  GetProduct,
+  GetCategories,
+  GetKeys,
+  GetSoldItems,
+  GetSoldStatus,
+};

@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+
 import TableHead from "../common/tableHead";
+import { GetSoldStatus } from "../../services/fakeProducts";
 
 const ProductsTableBody = (props) => {
   const { columns, items, onSellClick, onRemoveClick } = props;
@@ -15,7 +19,17 @@ const ProductsTableBody = (props) => {
               <td>{index + 1}</td>
               <td>{item.id}</td>
               <td>{item.productCode}</td>
-              <td>{item.name}</td>
+              <td>
+                {GetSoldStatus(item.id) ? (
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ marginLeft: 5, marginRight: 5 }}
+                  />
+                ) : (
+                  ""
+                )}
+                {item.name}
+              </td>
               <td>{item.price}</td>
               <td>{item.description}</td>
               <td>
@@ -25,6 +39,7 @@ const ProductsTableBody = (props) => {
                     variant="warning"
                     size="sm"
                     onClick={() => onSellClick(item)}
+                    disabled={GetSoldStatus(item.id)}
                   >
                     Sell
                   </Button>
