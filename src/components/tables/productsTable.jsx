@@ -35,17 +35,17 @@ const ProductsTableBody = (props) => {
               <td>
                 <center>
                   <Button
-                    style={{ marginLeft: 5, marginRight: 5 }}
+                    style={{ width: "15%", marginRight: 5 }}
                     variant="warning"
                     size="sm"
                     onClick={() => onSellClick(item)}
                     disabled={GetSoldStatus(item.id)}
                   >
-                    Sell
+                    {GetSoldStatus(item.id) ? "Sold" : "Sell"}
                   </Button>
                   <Link to={"/products/" + item.id}>
                     <Button
-                      style={{ marginLeft: 0, marginRight: 5 }}
+                      style={{ width: "15%", marginRight: 5 }}
                       variant="primary"
                       size="sm"
                     >
@@ -53,7 +53,7 @@ const ProductsTableBody = (props) => {
                     </Button>
                   </Link>
                   <Button
-                    style={{ marginLeft: 0, marginRight: 5 }}
+                    style={{ width: "25%", marginRight: 5 }}
                     variant="danger"
                     size="sm"
                     onClick={() => onRemoveClick(item)}

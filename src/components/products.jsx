@@ -85,10 +85,11 @@ class Products extends Component {
       <div>
         <Button
           style={{
-            marginLeft: 5,
-            marginRight: 5,
+            marginLeft: "auto",
+            marginRight: "10px",
             marginTop: "10px",
             marginBottom: "10px",
+            display: "block",
           }}
           variant="primary"
           size="sm"

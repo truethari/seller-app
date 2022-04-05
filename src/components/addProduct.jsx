@@ -41,7 +41,7 @@ class AddProduct extends Component {
             defaultValue={this.state.selectedCategory}
             onChange={this.onChangeCategory}
           >
-            {GetCategories().map((category) => (
+            {["Select..", ...GetCategories()].map((category) => (
               <option key={category}>{category}</option>
             ))}
           </Form.Control>
